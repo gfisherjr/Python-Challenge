@@ -14,7 +14,7 @@ new_pybank_list2 = zip(dates, profit_loss, monthly_change)
 
 # Directory
 dir_path = os.path.dirname(os.path.realpath(__file__))
-csvpath = os.path.join(dir_path, '..', 'PyBank_budget_data.csv')
+csvpath = os.path.join(dir_path, '..', '..', 'PyBank_budget_data.csv')
 output_file = os.path.join(dir_path, 'outputfile.txt')
 
 with open(csvpath) as csvfile:
