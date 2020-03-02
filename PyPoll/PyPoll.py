@@ -8,7 +8,7 @@ candidate = []
 # Directory
 dir_path = os.path.dirname(os.path.realpath(__file__))
 csvpath = os.path.join(dir_path, '..', '..', 'PyPoll_election_data.csv')
-PyPoll_output_file = os.path.join(dir_path, 'outputfile.txt')
+PyPoll_output_file = os.path.join(dir_path, 'PyPoll_outputfile.txt')
 
 #Open CSV
 with open (csvpath) as csvfile:
