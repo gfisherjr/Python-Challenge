@@ -34,31 +34,35 @@ for name in unique_candidates:
 sorted_cand_dictionary = sorted(cand_dictionary.items(), key=lambda name: name[1], reverse=True)
 
 #Election Result Analysis
-print(f'Election Results'
+print(
+    f'Election Results'
     f'\n-------------------------'
     f'\nTotal Votes: {total_votes}'
     f'\n-------------------------'
-    )
+)
 for cand_stats in sorted_cand_dictionary:
-    print(f'{cand_stats[0]}: {cand_stats[1][0]}% ({cand_stats[1][1]})'
-    )
-print(f'-------------------------'
+    print(f'{cand_stats[0]}: {cand_stats[1][0]}% ({cand_stats[1][1]})')
+
+print(
+    f'-------------------------'
     f'\nWinner: {sorted_cand_dictionary[0][0]}'
     f'\n-------------------------'
-    )
+)
 
 #Write Answers to New Text File
 with open(PyPoll_output_file, 'w') as outfile:
-    outfile.write('Election Results'
-                f'\n-------------------------'
-                f'\nTotal Votes: {total_votes}'
-                f'\n-------------------------'
+    outfile.write(
+        f'Election Results'
+        f'\n-------------------------'
+        f'\nTotal Votes: {total_votes}'
+        f'\n-------------------------'
     )
     for cand_stats in sorted_cand_dictionary:
-        outfile.write(f'\n{cand_stats[0]}: {cand_stats[1][0]}% ({cand_stats[1][1]})'
-    )
-    outfile.write(f'\n-------------------------'
-                f'\nWinner: {sorted_cand_dictionary[0][0]}'
-                f'\n-------------------------'
+        outfile.write(f'\n{cand_stats[0]}: {cand_stats[1][0]}% ({cand_stats[1][1]})')
+
+    outfile.write(
+        f'\n-------------------------'
+        f'\nWinner: {sorted_cand_dictionary[0][0]}'
+        f'\n-------------------------'
     )
     outfile.close()
