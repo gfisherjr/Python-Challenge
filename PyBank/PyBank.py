@@ -8,9 +8,6 @@ dates = []
 profit_loss = []
 monthly_change = []
 
-new_pybank_list = zip(dates, profit_loss, monthly_change)
-new_pybank_list2 = zip(dates, profit_loss, monthly_change)
-
 # Directory
 dir_path = os.path.dirname(os.path.realpath(__file__))
 csvpath = os.path.join(dir_path, '..', '..', 'PyBank_budget_data.csv')
@@ -24,10 +21,8 @@ with open(csvpath) as csvfile:
         dates.append(row[0])
         profit_loss.append(int(row[1]))
 
-#Calculate Monthly Change
-for i in range(len(profit_loss) - 1):
-    change = (profit_loss[i + 1] - profit_loss[i])
-    monthly_change.append(change)
+#Calculate Monthly Change and add to list
+monthly_change = [(profit_loss[i + 1] - profit_loss[i]) for i in range(len(profit_loss) - 1)]
 
 #insert value of zero in first element of monthly_change list
 monthly_change.insert(0, 0) 
@@ -36,9 +31,13 @@ monthly_change.insert(0, 0)
 average_monthly_change = round(statistics.mean(monthly_change[1:]), 2)
 
 #Greatest Increase and Decrease in Profits:
+new_pybank_list = zip(dates, profit_loss, monthly_change)
+new_pybank_list2 = zip(dates, profit_loss, monthly_change)
+
 max_tuple = max((new_pybank_list), key=lambda x: x[2])
 min_tuple = min((new_pybank_list2), key=lambda y: y[2])
 
+#Financial Analysis
 print('\nFinancial Analysis'
     f'\n--------------------------'
     f'\nTotal Months: {len(dates)}'
@@ -48,6 +47,7 @@ print('\nFinancial Analysis'
     f'\nGreatest Decrease in Profits: {min_tuple[0]} (${min_tuple[2]})'
 )
 
+#Write Answers to New Text File
 with open(output_file, 'w') as outfile:
     outfile.write('Financial Analysis'
                 f'\n--------------------------'
